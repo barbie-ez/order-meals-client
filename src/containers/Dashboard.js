@@ -1,19 +1,34 @@
 import React, { Component } from 'react';
-import Article from './Article';
+import { ConnectedTask as Task } from './Task';
 import { Container, Col, Row } from 'react-bootstrap';
+import Jumbo from './Jumbo';
+import { connect } from 'react-redux';
 class Dashboard extends Component {
     render() {
         const lists = [];
         return (
-            <Container>
-                <Row>
-                    <Col><Article header="To Do" title="What can I Do" list={lists} footer="2020" /></Col>
-                    <Col> <Article header="Doing" title="What can I Do" list={lists} footer="2020" /></Col>
-                    <Col> <Article header="Done" title="What can I Do" list={lists} footer="2020" /></Col>
-                </Row>
-            </Container>
+            <>
+                <Jumbo />
+                <Container>
+                    <Row>
+                        {this.props.groups.map(group => (
+
+                            <Col key={group.id}><Task key={group.id} Id={group.id} header={group.name} title="What can I Do" list={lists} footer={group.owner} /></Col>
+
+                        ))}
+                    </Row>
+                </Container>
+            </>
         );
     }
 }
 
-export default Dashboard;
+function mapStateToProps(state) {
+    return {
+        groups: state.groups
+    }
+};
+
+//export default Dashboard;
+
+export const ConnectedDashboard = connect(mapStateToProps)(Dashboard);

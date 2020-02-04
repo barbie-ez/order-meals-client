@@ -5,10 +5,9 @@ class Jumbo extends Component {
     return (
       <Jumbotron fluid>
         <Container>
-          <h1>Fluid jumbotron</h1>
+          <h1>Meals</h1>
           <p>
-            This is a modified jumbotron that occupies the entire horizontal space of
-            its parent.
+            Feel free to select what you wish to cook over the next few weeks of training.
               </p>
         </Container>
       </Jumbotron>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ConnectedNavigation as Navigation } from './containers/Navigation';
-import Dashboard from './containers/Dashboard';
+import { ConnectedDashboard as Dashboard } from './containers/Dashboard';
 import { Provider } from 'react-redux';
 import { Router, Route } from 'react-router-dom';
 import { store } from './store';

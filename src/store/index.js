@@ -21,6 +21,20 @@ export const store = createStore(
                             owner: action.ownerID,
                             isComplete: false
                         }]
+                    case mutations.UPDATE_TASK:
+                        console.log(action);
+                        return tasks.map(task => {
+                            return (task.id === action.taskiD ?
+                                {
+                                    ...task,
+                                    isComplete: action.isComplete,
+                                    name: action.name,
+                                    group: action.groupID
+                                }
+                                : task)
+                        })
+
+
                 }
                 return tasks;
             },

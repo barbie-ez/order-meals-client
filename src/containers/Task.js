@@ -6,10 +6,9 @@ import { ConnectedTaskModal as TaskModal } from '../components/TaskModal';
 export class Task extends Component {
   render() {
     const listItems = this.props.tasks.map((item) =>
-      <Card.Text key={item.id}>
-        <TaskModal task={item.name} />
 
-      </Card.Text>
+      <TaskModal key={item.id} groups={item} group={item.group} task={item.name} id={item.id} isComplete={item.isComplete} comments={item.comments} />
+
     );
     return (
       <Card style={{ width: '18rem' }} >

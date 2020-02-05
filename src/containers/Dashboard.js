@@ -25,7 +25,8 @@ class Dashboard extends Component {
 
 function mapStateToProps(state) {
     return {
-        groups: state.groups
+        groups: state.groups,
+        tasks: state.tasks
     }
 };
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { ConnectedTaskModal as TaskModal } from '../components/TaskModal'
 
 class Navigation extends Component {
   render() {
@@ -13,6 +14,7 @@ class Navigation extends Component {
           <Nav.Link as={Link} to="/">Dashboard</Nav.Link>
           <Nav.Link as={Link} to="/features">Features</Nav.Link>
           <Nav.Link as={Link} to="/pricing">Pricing</Nav.Link>
+          <TaskModal />
         </Nav>
       </Navbar>
 

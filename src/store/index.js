@@ -10,10 +10,17 @@ const sagaMiddleware = createSagaMiddleware();
 export const store = createStore(
     combineReducers(
         {
-            tasks(tasks = defaultState.tasks, action) {
+            tasks(tasks = defaultState.tasks, action) {//basic reducer pattern but more customised
                 switch (action.type) {
                     case mutations.CREATE_TASK:
                         console.log(action)
+                        return [...tasks, {
+                            id: action.taskiD,
+                            name: "New task",
+                            group: action.groupID,
+                            owner: action.ownerID,
+                            isComplete: false
+                        }]
                 }
                 return tasks;
             },

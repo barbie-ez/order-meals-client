@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { requestTaskCreation } from '../store/mutations';
+import { ConnectedTaskModal as TaskModal } from '../components/TaskModal';
 export class Task extends Component {
   render() {
-    const listItems = this.props.list.map((item) =>
+    const listItems = this.props.tasks.map((item) =>
       <Card.Text key={item.id}>
-        {item.name}
+        <TaskModal task={item.name} />
+
       </Card.Text>
     );
     return (

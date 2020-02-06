@@ -2,8 +2,8 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { defaultState } from '../server/defaultState';
 import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
-import * as sagas from './sagas.mock';
-import { taskCreationSaga } from './sagas.mock';
+import * as sagas from './sagas';
+import { taskCreationSaga } from './sagas';
 import * as mutations from './mutations';
 const sagaMiddleware = createSagaMiddleware();
 
@@ -16,7 +16,7 @@ export const store = createStore(
                         console.log(action)
                         return [...tasks, {
                             id: action.taskiD,
-                            name: "New task",
+                            name: action.name,
                             group: action.groupID,
                             owner: action.ownerID,
                             isComplete: false

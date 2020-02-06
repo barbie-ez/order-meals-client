@@ -34,10 +34,11 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  console.log(ownProps);
   return {
-    createNewTask(id) {
-      console.log("Creatng a new task", id);
-      dispatch(requestTaskCreation(id));
+    createNewTask(id, name) {
+      console.log("Creatng a new task", id, "New Task");
+      dispatch(requestTaskCreation(id, "New Task"));
     }
   }
 };

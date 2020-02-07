@@ -10,8 +10,25 @@ const sagaMiddleware = createSagaMiddleware();
 export const store = createStore(
     combineReducers(
         {
-            tasks(tasks = defaultState.tasks, action) {//basic reducer pattern but more customised
+            session(usersession = defaultState.session || {}, action) {
+                let { type, authenticated, session } = action;
+                switch (type) {
+                    case mutations.SET_STATE:
+                        return { ...usersession, id: action.state.session.id };
+                    case mutations.REQUEST_AUTHENTICATE_USER:
+                        return { ...usersession, authenticated: mutations.AUTHENTICATING };
+
+                    case mutations.PROCESSING_AUTHENTICATE_USER:
+                        return { ...usersession, authenticated };
+                    default:
+                        return usersession
+                }
+
+            },
+            tasks(tasks = [], action) {//basic reducer pattern but more customised
                 switch (action.type) {
+                    case mutations.SET_STATE:
+                        return action.state.tasks;
                     case mutations.CREATE_TASK:
                         console.log(action)
                         return [...tasks, {
@@ -38,13 +55,17 @@ export const store = createStore(
                 }
                 return tasks;
             },
-            comments(comments = defaultState.comments) {
+            comments(comments = []) {
                 return comments;
             },
-            groups(groups = defaultState.groups) {
+            groups(groups = [], action) {
+                switch (action.type) {
+                    case mutations.SET_STATE:
+                        return action.state.groups
+                }
                 return groups;
             },
-            users(users = defaultState.users) {
+            users(users = []) {
                 return users;
             },
 
@@ -52,5 +73,5 @@ export const store = createStore(
     applyMiddleware(createLogger(), sagaMiddleware)
 );
 for (let saga in sagas) {
-    sagaMiddleware.run(taskCreationSaga);
+    sagaMiddleware.run(sagas[saga]);
 }

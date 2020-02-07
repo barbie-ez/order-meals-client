@@ -9,9 +9,9 @@ class Navigation extends Component {
     return (
 
       <Navbar bg="dark" variant="dark" className="ml">
-        <Navbar.Brand as={Link} to="/">Order Meals</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/dashboard">Order Meals</Navbar.Brand>
         <Nav className="ml-auto">
-          <Nav.Link as={Link} to="/">Dashboard</Nav.Link>
+          <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link>
           <Nav.Link as={Link} to="/features">Features</Nav.Link>
           <Nav.Link as={Link} to="/pricing">Pricing</Nav.Link>
           <TaskModal />

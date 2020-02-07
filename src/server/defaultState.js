@@ -1,12 +1,17 @@
+import md5 from 'md5'
+
 export const defaultState = {
+    session: {
+        authenticated: false
+    },
     users: [{
         id: "U1",
         name: "Dev",
-        friends: [`U2`]
+        password: md5("YOHOLLO")
     }, {
         id: "U2",
         name: "C. Eeyo",
-        friends: []
+        password: md5("YOHOLLO")
     }],
     groups: [{
         name: "To Do",
@@ -22,6 +27,7 @@ export const defaultState = {
         owner: "U1"
     }
     ],
+
     tasks: [{
         name: "Refactor tests",
         id: "T1",
